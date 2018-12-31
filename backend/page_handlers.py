@@ -46,4 +46,4 @@ def landing():
 @jinja2_view('./backend/pages/high-scores.html')
 def high_scores():
     top_10_high_scores = getHighScores()
-    return {"highScores": top_10_high_scores}
+    return {"highScores": top_10_high_scores, "version": utils.getVersion()}
