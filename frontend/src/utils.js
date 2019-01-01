@@ -14,4 +14,9 @@ export function ajax(url, options, callbackFunc){
     }).catch(function (error) {  
         console.log('Ajax Request failure: ', error);  
     });
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> 27a0acf0b3390b674fdf2195859150c61f00bb91

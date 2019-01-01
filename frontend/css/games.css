@@ -139,13 +139,19 @@ h1{
     border-top: 3px solid #b6261b;
 }
 
+footer {
+    background-color: whitesmoke;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
 form{
     padding: 12px;
-    background-color: whitesmoke;
     color: #333;
 }
 
-form input[type='submit']{
+.btn, form input[type='submit']{
     background-color: brown;
     color: white;
     border: none;
@@ -154,7 +160,7 @@ form input[type='submit']{
     outline: none;
 }
 
-form input[type='submit']:hover{
+.btn, form input[type='submit']:hover{
     background-color:crimson;
 }
 
@@ -180,4 +186,8 @@ nav{
     font-size: 20px;
     font-family: Arial;
     color: #999;
+}
+
+a {
+    margin: 0 15px;
 }
