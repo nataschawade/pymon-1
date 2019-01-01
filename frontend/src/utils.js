@@ -15,3 +15,4 @@ export function ajax(url, options, callbackFunc){
         console.log('Ajax Request failure: ', error);  
     });
 }
+
