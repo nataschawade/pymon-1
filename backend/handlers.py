@@ -14,7 +14,7 @@ def status(game_id):
 @app.delete('/games/<game_id>')
 def delete(game_id):
     controller.deleteGame(game_id)
-    redirect('/games')
+    return utils.jsonResponse(response, {"result": "Successfully deleted"})
 
 @app.post('/games/<game_id>/players')
 def joinGameHandler(game_id):
