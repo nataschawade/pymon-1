@@ -150,17 +150,6 @@ This project is licensed under the MIT License
 Split into groups of up to 10 people :)
 AND GET THE JOB DONE!
 
-<<<<<<< HEAD
-* Implement the filters on /games page 
-    * **description:** (should allow users to filter games according to status)
-    * **desing:** A selected filter should be css "brown" color ("OPEN" should be selected on load)
-    * **constraints:** frontend implementation (HTML/CSS/JS)
-* Implement a back button in /game page.
-    * **description:** allow users to go back to the /games page
-    * **design:** total freedom
-    * **constraints:** Add React component "BackBtn"
-* Fix Bug - player can press more than one button per turn
-=======
 * LIOR - Implement the filters on /games page 
     * **description:** (should allow users to filter games according to status)
     * **design:** A selected filter should be css "brown" color ("OPEN" should be selected on load)
@@ -170,52 +159,33 @@ AND GET THE JOB DONE!
     * **design:** total freedom
     * **constraints:** Add React component "BackBtn"
 * HILLA - Fix Bug - player can press more than one button per turn
->>>>>>> 27a0acf0b3390b674fdf2195859150c61f00bb91
     * **description:** This is against the rules, we need to somehow block the user from being able to do that
     * **constraints:** use media queries
 * Implement a more impressive "Game Over"/"Game Won" prompt
     * **description:** currently there are none, try to make something nice...
     * **design:** total freedom
     * **constraints:** total freedom (follow application structure)
-<<<<<<< HEAD
-* Implement highscores page
-    * **description:** A standalone page showing the top 10 users with the heighest score (most games won) descending order.
-    * **design:** total freedom (follow application design)
-    * **constraints:** total freedom (follow application structure)
-* Implement the ability for a player to select one of 5 avatars
-=======
 * ORI - Implement highscores page - DONE
     * **description:** A standalone page showing the top 10 users with the heighest score (most games won) descending order.
     * **design:** total freedom (follow application design)
     * **constraints:** total freedom (follow application structure)
 * SAM - Implement the ability for a player to select one of 5 avatars
->>>>>>> 27a0acf0b3390b674fdf2195859150c61f00bb91
     * **description:** On the /start page add the ability to select an avatar
     (the DB already contains that field)
     The avatar should be shown in the "players" component next to the players name
     * **design:** total freedom
     * **constraints:** total freedom (follow application structure)
-<<<<<<< HEAD
-* Update project to Python 3.x
-    * **description:** currently the project runs Pyhton 2.7.x
-    update the project and make sure all third party libraries works.
-    Also verify deploying to Heroku is not borken.
-* Limit the number of players per game to be less than the number of steps in the sequence
-    * **description:** If there are more players than steps in the sequence the last players to join will win without playing.
-    don't allow a player to join a "full" game
-    * **constraints:** total freedom (follow application structure)
-* Implement delete button for game in the /games page
-=======
 * SHEINA - Update project to Python 3.x - DONE
     * **description:** currently the project runs Pyhton 2.7.x
     update the project and make sure all third party libraries works.
     Also verify deploying to Heroku is not borken.
 * TAL - Limit the number of players per game to be less than the number of steps in the sequence
+     - DONE
+    * **implementation:** if len(players) == len(sequence) than change the status to waiting. then joinButton is disabled through Gilad's React code (conditional rendering)  
     * **description:** If there are more players than steps in the sequence the last players to join will win without playing.
     don't allow a player to join a "full" game
     * **constraints:** total freedom (follow application structure)
 * ORI - Implement delete button for game in the /games page
->>>>>>> 27a0acf0b3390b674fdf2195859150c61f00bb91
     * **description:** users should be able to delete old games
     * **design:** show the delete button only for games the user can delete
     * **constraints:** only the game creator should be able to delete a game (follow application structure)
