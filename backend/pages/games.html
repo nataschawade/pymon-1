@@ -3,13 +3,14 @@
 {% block head %}
 <link href="/css/games.css?v={{version}}" rel="stylesheet">
 <script defer src="/js/games.js"></script>
+<script defer src="/js/moreUtils.js"></script>
 {% endblock %}
 {% block app %}
-<div class="page">
+<div id="gamesid" class="page">
 <header>
 <h1 > Available Games</h1>
 {% if games|length > 0 %}
-<nav><span class="filter clickable">All</span> | <span class="filter clickable">Open</span> | <span class="filter clickable">Won</span> | <span class="filter clickable" >Failed</span></nav>
+    <nav id="navBar"><span class="filter clickable">All</span> | <span class="filter clickable">Open</span> | <span class="filter clickable">Won</span> | <span class="filter clickable" >Failed</span></nav>
 {% endif %}
 </header>
 <main class="game-list">

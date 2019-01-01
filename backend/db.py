@@ -1,22 +1,19 @@
 from backend import dbutils
 
-
 def getAllGames():
     return dbutils.queryAll("SELECT * FROM game")
-
 
 def getGame(game_id):
     return dbutils.queryOne("SELECT * FROM game where id = {}".format(game_id))
 
-
 def newGame(name, creator, sequence):
-    return dbutils.updateOrInsert(
-        "INSERT INTO game (name, sequence, creator) VALUES ('{}', '{}', '{}')".format(name, sequence, creator))
-
+    return dbutils.updateOrInsert("INSERT INTO game (name, sequence, creator) VALUES ('{}', '{}', '{}')".format(name, sequence, creator))
 
 def updateGameStatus(game_id, status):
-    return dbutils.updateOrInsert("UPDATE game SET status = '{}' WHERE id = '{}' ".format(status, game_id))
+    return dbutils.updateOrInsert("UPDATE game SET status = '{}' WHERE id = {} ".format(status, game_id))
 
+def gameIsClosed(game_id):
+    return dbutils.updateOrInsert("UPDATE game SET closed=1 WHERE id = {} ".format(game_id))
 
 def updateGameStatusAndStep(game_id, status, new_step):
     return dbutils.updateOrInsert("UPDATE game SET status = 'won', step='{}' WHERE id = '{}'".format(new_step, game_id))

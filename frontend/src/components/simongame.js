@@ -3,6 +3,7 @@ import {getGameId, ajax} from "../utils"
 import Simon from "./simon"
 import Players from "./players"
 import Sequence from "./sequence"
+import BckBtn from "./bckBtn"
 
 export default class SimonGame extends React.Component {
     constructor(){
@@ -31,16 +32,17 @@ export default class SimonGame extends React.Component {
 
     render() {
         return <div className="main">
-                <div className="center">
-                    <Simon  sequence={this.state.game.sequence} disabled={this.state.user.status != "turn"} showPlayBtn={this.state.user.status == "new"}/>
-                    <Sequence sequence={this.state.game.sequence} step={this.state.game.step} />
+                    <div className="center">
+                        <Simon  sequence={this.state.game.sequence} disabled={this.state.user.status != "turn"} showPlayBtn={this.state.user.status == "new"}/>
+                        <Sequence sequence={this.state.game.sequence} step={this.state.game.step} />
+                    </div>
+                    <BckBtn/>
+                    <div className="side">
+                        <div className="game-name">{this.state.game.name}</div>
+                        {(this.isViewMode()) && <div className="view-mode" >View mode</div>}
+                        <div className={`game-status ${this.state.game.status}`}>{this.state.game.status}</div>
+                        <Players players={this.state.players} userName={this.state.user.name} showJoinBtn={ this.state.user.status == "viewer" && this.state.game.status === "open"} />
+                    </div>
                 </div>
-                <div className="side">
-                    <div className="game-name">{this.state.game.name}</div>
-                    {(this.isViewMode()) && <div className="view-mode" >View mode</div>}
-                    <div className={`game-status ${this.state.game.status}`}>{this.state.game.status}</div>
-                    <Players players={this.state.players} userName={this.state.user.name} showJoinBtn={ this.state.user.status == "viewer" && this.state.game.status === "open"} />
-                </div>
-            </div>
     }
 }
