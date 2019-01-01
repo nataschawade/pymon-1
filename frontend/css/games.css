@@ -191,3 +191,13 @@ nav{
 a {
     margin: 0 15px;
 }
+
+.trash-icon {
+    display:none;
+    transform:scale(.5,.5);
+}
+
+.game:hover .trash-icon {
+    display:inline;
+    transform:scale(.5,.5);
+}

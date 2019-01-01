@@ -11,6 +11,11 @@ def status(game_id):
     gameStatus = controller.generateGameStatus(game_id, currentPlayerName)
     return utils.jsonResponse(response, gameStatus)
 
+@app.delete('/games/<game_id>')
+def delete(game_id):
+    controller.deleteGame(game_id)
+    redirect('/games')
+
 @app.post('/games/<game_id>/players')
 def joinGameHandler(game_id):
     playerName = request.get_cookie("player")

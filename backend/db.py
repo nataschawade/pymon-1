@@ -79,4 +79,7 @@ def getHighScores():
     return high_scores
 
 
-getHighScores()
+def deleteGame(game_id):
+    delete_from_playergame = dbutils.updateOrInsert("DELETE FROM playergame WHERE game = '{}'".format(game_id))
+    delete_from_games = dbutils.updateOrInsert("DELETE FROM games WHERE id = '{}'".format(game_id))
+    return delete_from_games and delete_from_playergame
