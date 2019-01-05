@@ -70,6 +70,20 @@ ul{
     transition: opacity 1s ease-in-out;
     animation-iteration-count: infinite;
 }
+#avatars {
+  display: flex;
+  height: 78px;
+}
+.avatar {
+  top: 0px;
+  position: relative;
+  right: -39px;
+}
+.avatar_img {
+  height: 60%;
+  position: relative;
+  top: 20px;
+}
 
 /* loader */
 .lds-ellipsis {

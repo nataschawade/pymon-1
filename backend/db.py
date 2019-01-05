@@ -19,13 +19,20 @@ def updateGameStep(game_id, new_step):
     return dbutils.updateOrInsert("UPDATE game SET step = '{}' WHERE id = '{}'".format(new_step, game_id))
 
 def getGamePlayers(game_id):
+    print("get players")
     return dbutils.queryAll("SELECT * FROM playergame where game = {} ORDER BY created".format(game_id))
 
-def newPlayer(player_name):
-    return dbutils.updateOrInsert("INSERT INTO player (id) VALUES ('{}')".format(player_name))
+def newPlayer(player_name, avatar):
+    print(avatar)
+    return dbutils.updateOrInsert("INSERT INTO player (id, avatar) VALUES ('{}','{}')".format(player_name, avatar))
 
-def joinGame(game_id, player_id):
-    return dbutils.updateOrInsert("INSERT INTO playergame (game, player) VALUES ('{}', '{}')".format(game_id, player_id))
+def getAvatar(player_name):
+    print("getAv")
+    return dbutils.queryOne("SELECT avatar FROM player where id = '{}'".format(player_name))
+
+def joinGame(game_id, player_id, avatar):
+    print("db.joinGame")
+    return dbutils.updateOrInsert("INSERT INTO playergame (game, player, avatar) VALUES ('{}', '{}', '{}')".format(game_id, player_id, avatar))
 
 def updatePlayerStatus(game_id, player_id, status):
     return dbutils.updateOrInsert("UPDATE playergame SET status = '{}' WHERE game = '{}' AND player='{}'".format(status, game_id, player_id))
@@ -35,7 +42,6 @@ def getReadyPlayers(game_id):
 
 def setFirstTurn(game_id):
     return dbutils.updateOrInsert("UPDATE playergame SET status = 'turn' WHERE game = '{}' ORDER BY created ASC LIMIT 1".format(game_id))
-
 
 def getNextPlayer(game_id, last_player):
     player = dbutils.queryOne("""SELECT * FROM playergame WHERE

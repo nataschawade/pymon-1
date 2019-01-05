@@ -29,6 +29,7 @@ export default class Players extends React.Component {
             }
             {this.props.players.map(k => (
                 <li key={k.player} className="player" >
+                <span><img className="player-avatar" src = {k.avatar}></img></span>
                 <span className="player-name">{k.player} {(k.player === this.props.userName) ? "(you)":""}</span>
                 <span className={`player-status ${k.status}`}>{k.status}</span>
                 </li>

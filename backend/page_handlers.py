@@ -1,6 +1,9 @@
+import bottle
 from bottle import (Bottle, request, jinja2_view, redirect)
 from backend import utils
 from backend import controller
+import os
+bottle.TEMPLATE_PATH.insert(0, os.getcwd())
 
 pageHandler = Bottle()
 
@@ -27,12 +30,13 @@ def games():
 @jinja2_view('./backend/pages/game.html')
 def play(game_id):
     currentPlayer = request.get_cookie("player")
+    print(currentPlayer)
     if not currentPlayer or not controller.gameExists(game_id):
         redirect("/start")
         return
     return {"version" : utils.getVersion()}
 
 @pageHandler.get('/')
-@jinja2_view('./backend/pages/index.html')
+@jinja2_view('backend/pages/index.html')
 def landing():
     return {"version" : utils.getVersion()}

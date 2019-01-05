@@ -8,9 +8,40 @@
 <img class="colored-simon" src="/images/simoncolor.png">
 <div class="wrapper">
     <div class="modal shadowed">
-        <h1 > Select your user</h1>
+        <h1 > Select your user and choose an avatar</h1>
         <form action="/players" method="POST">
             <label>Name<input type="text" name="name" required></label>
+            <br>
+            <div id="avatars">
+                <input type = "radio" class = "avatar" name = "avatar" value = "/images/lior_avatar.png">
+                    <label for="av1">
+                        <img class = "avatar_img" src="/images/lior_avatar.png"/>
+                    </label> 
+                <input type = "radio" class = "avatar" name = "avatar" value = "/images/hilla_avatar.png">
+                    <label for="av2">
+                        <img class = "avatar_img"src="/images/hilla_avatar.png"/> 
+                    </label>
+                <input type = "radio" class = "avatar" name = "avatar" value = "/images/tal_avatar.png">
+                    <label for="av3">
+                        <img class = "avatar_img"src="/images/tal_avatar.png"/>
+                    </label>
+                <input type = "radio" class = "avatar" name = "avatar" value = "/images/guy_avatar.png">
+                    <label for="av4">
+                        <img class = "avatar_img"src="/images/guy_avatar.png"/>
+                    </label>
+                <input type = "radio" class = "avatar" name = "avatar" value = "/images/me_avatar.png">
+                    <label for="av5">
+                        <img class = "avatar_img" src="/images/me_avatar.png"/>
+                    </label>
+                <input type = "radio" class = "avatar" name = "avatar" value = "/images/sheina_avatar.png">
+                    <label for="av6">
+                        <img class = "avatar_img"src="/images/sheina_avatar.png"/>
+                    </label>
+                <input type = "radio" class = "avatar" name = "avatar" value = "/images/ori_avatar.png">
+                    <label for="av7">
+                        <img class = "avatar_img"src="/images/ori_avatar.png"/>
+                    </label>        
+            </div>
             <input class="modal-btn clickable" type="submit" value="Go">
         </form>
     </div>

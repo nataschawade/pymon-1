@@ -7,7 +7,7 @@ import Sequence from "./sequence"
 export default class SimonGame extends React.Component {
     constructor(){
         super();
-        this.state = {game:{status:"loading", sequence:[]}, user:{name:"", status:""}, players:[]}
+        this.state = {game:{status:"loading", sequence:[]}, user:{name:"", avatar:"", status:""}, players:[]}
     }
 
     componentDidMount() {
@@ -39,7 +39,7 @@ export default class SimonGame extends React.Component {
                     <div className="game-name">{this.state.game.name}</div>
                     {(this.isViewMode()) && <div className="view-mode" >View mode</div>}
                     <div className={`game-status ${this.state.game.status}`}>{this.state.game.status}</div>
-                    <Players players={this.state.players} userName={this.state.user.name} showJoinBtn={ this.state.user.status == "viewer" && this.state.game.status === "open"} />
+                    <Players players={this.state.players} userName={this.state.user.name} avatar={this.state.user.avatar} showJoinBtn={ this.state.user.status == "viewer" && this.state.game.status === "open"} />
                 </div>
             </div>
     }

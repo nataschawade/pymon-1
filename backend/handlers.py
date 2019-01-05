@@ -1,20 +1,29 @@
+import bottle
 from bottle import (Bottle, get, post, put, redirect, request, response, jinja2_view)
 import json
 from backend import utils
 from backend import controller
+from backend import db
+import os
+bottle.TEMPLATE_PATH.insert(0, os.getcwd())
 
 app = Bottle()
 
 @app.get('/games/<game_id>/status')
 def status(game_id):
     currentPlayerName = request.get_cookie("player")
-    gameStatus = controller.generateGameStatus(game_id, currentPlayerName)
+    currentPlayerAvatar = db.getAvatar(currentPlayerName)
+    print(currentPlayerAvatar['avatar'])
+    gameStatus = controller.generateGameStatus(game_id, currentPlayerName, currentPlayerAvatar)
     return utils.jsonResponse(response, gameStatus)
 
 @app.post('/games/<game_id>/players')
 def joinGameHandler(game_id):
     playerName = request.get_cookie("player")
-    result = controller.joinGame(game_id, playerName)
+    avatar = db.getAvatar(playerName)
+    print(avatar)
+    result = controller.joinGame(game_id, playerName, avatar['avatar'])
+    print(result)
     return utils.jsonResponse(response, {"result":result})
 
 @app.put('/games/<game_id>/players')
@@ -33,8 +42,10 @@ def turnHandler(game_id):
 @app.post('/players')
 def newPlayerHandler():
     playerName = request.forms.get("name")
-    controller.createPlayer(playerName)
-    response.set_cookie("player", playerName, None, max_age=3600000, path='/')
+    avatar = request.POST.dict['avatar'][0]
+    print(avatar)
+    controller.createPlayer(playerName, avatar)
+    response.set_cookie("player", playerName, path='/')
     redirect("/games")
 
 @app.post('/games')
