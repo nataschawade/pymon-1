@@ -1,16 +1,16 @@
 import React from "react";
 
 export default class BckBtn extends React.Component {
-
-    goBack() {
-        console.log("in")
-        window.history.go(-1)
-
+    constructor(props){
+        super(props);
     }
 
-
-    render() {
-        <button className='back-btn' onClick={this.goBack.bind(this)}>Back</button>
+    render(){
+        return(
+        <div className="back-btn">
+        <a href="../games">Back to games page</a>
+        </div>
+    )
 
     }
 

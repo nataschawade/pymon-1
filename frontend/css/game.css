@@ -160,22 +160,6 @@
     outline: none;
     border:none;
 }
-.simon .back-btn{
-    position: absolute;
-    background-color: white;
-    left: 50%;
-    top: 50%;
-    border-radius: 100%;
-    width: 100px;
-    height: 100px;
-    transform:translateX(-50%) translateY(-50%);
-    color:blue;
-    font-family: Lobster;
-    font-size: 30px;
-    box-shadow: inset 0px 0px 26px 0px rgba(0,0,0,0.62);
-    outline: none;
-    border:none;
-}
 
 .side{
     display: flex;
