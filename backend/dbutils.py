@@ -49,7 +49,8 @@ def updateOrInsert(sql):
     try:
         with connection.cursor() as cursor:
             success = cursor.execute(sql)
-    except Exception as  e:
+            connection.commit()
+    except Exception as e:
         print(repr(e))
         pass
     return success

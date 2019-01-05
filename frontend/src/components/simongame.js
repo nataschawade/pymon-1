@@ -3,6 +3,7 @@ import {getGameId, ajax} from "../utils"
 import Simon from "./simon"
 import Players from "./players"
 import Sequence from "./sequence"
+import BckBtn from "./bckBtn"
 
 export default class SimonGame extends React.Component {
     constructor(){

@@ -29,6 +29,9 @@ def generateGameStatus(game_id, player_id, avatar):
     currentGame = db.getGame(game_id)
     currentGame["sequence"] = currentGame["sequence"].split(",")
     gamePlayers = db.getGamePlayers(game_id)
+    if not currentGame['closed'] and len(currentGame['sequence']) == len(gamePlayers):
+        db.gameIsClosed(game_id)
+        db.updateGameStatus(game_id, "waiting")
     currentPlayer["status"] = "viewer"
     for p in gamePlayers:
         if p["player"] == player_id:
@@ -86,3 +89,6 @@ def wrongTurn(game_id, player_id):
 def win(game_id, newStep):
     db.updateGameStatusAndStep(game_id, "won", newStep)
     return db.updateWonPlayers(game_id)
+
+def deleteGame(game_id):
+    return db.deleteGame(game_id)

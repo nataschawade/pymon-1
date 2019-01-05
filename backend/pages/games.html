@@ -8,7 +8,7 @@
 <header>
 <h1 > Available Games</h1>
 {% if games|length > 0 %}
-<nav><span class="filter clickable">All</span> | <span class="filter clickable">Open</span> | <span class="filter clickable">Won</span> | <span class="filter clickable" >Failed</span></nav>
+    <nav id="navBar"><span class="filter clickable">All</span> | <span class="filter clickable">Open</span> | <span class="filter clickable">Won</span> | <span class="filter clickable" >Failed</span></nav>
 {% endif %}
 </header>
 <main class="game-list">
@@ -18,6 +18,9 @@
         <img src="/images/simoncolor.png">
         <div class="game-bottom">
             {{g.name}}
+            {% if g.status in ("failed", "won") %}
+                <i class="fas fa-trash-alt clickable trash-icon" id="delete-{{g.id}}"></i>
+            {% endif %}
         </div>
     </a>
 {% else %}
@@ -30,6 +33,9 @@
         <label>Name:<input type="text" name="name" required></label>
         <input type="submit" class="clickable" value="Create" />
     </form>
+    <a href="/high-scores">
+        <button class="clickable btn">High Scores</button>
+    </a>
 </footer>
 </div>
 {% endblock %}

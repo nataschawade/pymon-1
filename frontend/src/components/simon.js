@@ -51,7 +51,9 @@ export default class Simon extends React.Component {
             ))}
             { this.state.sequenceStep == 0 && this.props.showPlayBtn &&
             <button className="play-btn" onClick={this.playSequence.bind(this)}>Play</button>
+
             }
+
             </div>
     }
 }

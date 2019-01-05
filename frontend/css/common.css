@@ -39,6 +39,11 @@ ul{
     }
   }
 
+.hidden{
+  visibility: hidden;
+  display:none;
+}
+
 @keyframes movearound {
     0%  {top:240px;left:840px;opacity:0;}
     5%  {top:240px;left:840px;opacity:1;}
