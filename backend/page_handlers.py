@@ -1,7 +1,10 @@
+import bottle
 from bottle import (Bottle, request, jinja2_view, redirect)
 from backend import utils
 from backend import controller
 from backend.db import getHighScores
+import os
+bottle.TEMPLATE_PATH.insert(0, os.getcwd())
 
 pageHandler = Bottle()
 
@@ -15,7 +18,6 @@ def start():
         return
     return {"version": utils.getVersion()}
 
-
 @pageHandler.get('/games')
 @jinja2_view('./backend/pages/games.html')
 def games():
@@ -25,7 +27,6 @@ def games():
         return
     return {"version": utils.getVersion(), "games": controller.listGames()}
 
-
 @pageHandler.get('/games/<game_id>')
 @jinja2_view('./backend/pages/game.html')
 def play(game_id):
@@ -33,11 +34,10 @@ def play(game_id):
     if not currentPlayer or not controller.gameExists(game_id):
         redirect("/start")
         return
-    return {"version": utils.getVersion()}
-
+    return {"version" : utils.getVersion()}
 
 @pageHandler.get('/')
-@jinja2_view('./backend/pages/index.html')
+@jinja2_view('backend/pages/index.html')
 def landing():
     return {"version": utils.getVersion()}
 

@@ -1,5 +1,7 @@
 from bottle import (Bottle, static_file)
 staticHandler = Bottle()
+import sys
+
 
 @staticHandler.get("/js/<filepath:re:.*\.js>")
 def js(filepath):

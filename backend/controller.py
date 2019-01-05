@@ -5,8 +5,8 @@ def createGame(name, creator):
     sequence = utils.generateSequence()
     db.newGame(name, creator, sequence)
 
-def createPlayer(name):
-    db.newPlayer(name)
+def createPlayer(name, avatar):
+    db.newPlayer(name, avatar)
 
 def gameExists(game_id):
     return db.getGame(game_id)
@@ -14,16 +14,18 @@ def gameExists(game_id):
 def listGames():
     return db.getAllGames()
 
-def joinGame(game_id, player_id):
+def joinGame(game_id, player_id, avatar):
+    print("controller joingame")
     currentGame = db.getGame(game_id)
     if currentGame['status'] == "open":
-        return db.joinGame(game_id, player_id)
+        return db.joinGame(game_id, player_id, avatar)
     return False
 
 
 
-def generateGameStatus(game_id, player_id):
+def generateGameStatus(game_id, player_id, avatar):
     currentPlayer = {"name":player_id}
+    player_avatar = avatar
     currentGame = db.getGame(game_id)
     currentGame["sequence"] = currentGame["sequence"].split(",")
     gamePlayers = db.getGamePlayers(game_id)
@@ -35,7 +37,7 @@ def generateGameStatus(game_id, player_id):
         if p["player"] == player_id:
             currentPlayer["status"] = p["status"]
             break
-    return {"game":currentGame,"players":gamePlayers, "user":currentPlayer}
+    return {"game":currentGame,"players":gamePlayers, "user":currentPlayer, "avatar": player_avatar}
 
 def playTurn(game_id, player_id, color):
     currentGame = db.getGame(game_id)

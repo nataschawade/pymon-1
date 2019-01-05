@@ -2,11 +2,9 @@
 {% block title %} Games{% endblock %}
 {% block head %}
 <link href="/css/games.css?v={{version}}" rel="stylesheet">
-<script defer src="/js/games.js"></script>
-<script defer src="/js/moreUtils.js"></script>
 {% endblock %}
 {% block app %}
-<div id="gamesid" class="page">
+<div class="page">
 <header>
 <h1 > Available Games</h1>
 {% if games|length > 0 %}
@@ -15,7 +13,7 @@
 </header>
 <main class="game-list">
 {% for g in games %}
-    <span class="game shadowed {{g.status}}" id="game-{{g.id}}">
+    <a class="game shadowed {{g.status}}" href="/games/{{g.id}}">
         <div class="ribbon"><span>{{g.status}}</span></div>
         <img src="/images/simoncolor.png">
         <div class="game-bottom">
@@ -24,7 +22,7 @@
                 <i class="fas fa-trash-alt clickable trash-icon" id="delete-{{g.id}}"></i>
             {% endif %}
         </div>
-    </span>
+    </a>
 {% else %}
     <div class="no-games">No available games :(</div>
 {% endfor %}

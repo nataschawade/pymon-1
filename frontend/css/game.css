@@ -21,6 +21,12 @@
     margin-left:3px;
 }
 
+.player-avatar{
+    margin-left: 3px;
+    height: 30px;
+    margin-top: 3px;
+}
+
 .player-status{
     margin-left: 3px;
     padding: 5px;
